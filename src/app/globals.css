@@ -1,0 +1,62 @@
+@import "./fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-portal-mist font-body text-brand-ink;
+  }
+
+  /* Uppercase, wide-tracked display type is the signature of the space. */
+  .u-eyebrow {
+    @apply font-display text-[11px] font-bold uppercase tracking-[0.18em];
+  }
+}
+
+@layer components {
+  /* Deep blue field used by the header, the hero and the welcome screen. */
+  .portal-field {
+    @apply bg-portal-field relative overflow-hidden;
+  }
+
+  /* Rich-text rendered from the versioned legal documents. */
+  .legal-prose {
+    @apply text-[15px] leading-relaxed text-brand-ink;
+  }
+  .legal-prose h1,
+  .legal-prose h2,
+  .legal-prose h3 {
+    @apply font-display font-bold text-portal-navy;
+  }
+  .legal-prose h1 {
+    @apply mb-4 mt-8 text-2xl;
+  }
+  .legal-prose h2 {
+    @apply mb-3 mt-7 text-lg;
+  }
+  .legal-prose h3 {
+    @apply mb-2 mt-6 text-base;
+  }
+  .legal-prose p {
+    @apply mb-4;
+  }
+  .legal-prose ul {
+    @apply mb-4 list-disc space-y-1 pl-6;
+  }
+  .legal-prose ol {
+    @apply mb-4 list-decimal space-y-1 pl-6;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-portal-navy;
+  }
+  .legal-prose a {
+    @apply text-portal-blue underline underline-offset-2;
+  }
+}

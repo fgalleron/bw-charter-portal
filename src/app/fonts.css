@@ -1,0 +1,185 @@
+/*
+ * Self-hosted brand typefaces.
+ *
+ * Files live under /public/fonts and are served by Next.js as static assets.
+ * `font-display: swap` shows the system fallback immediately and swaps in the
+ * webfont once it loads: best perceived performance, no FOIT.
+ *
+ * Format strategy:
+ *   - CenturyGothic: woff2 (primary) + woff (fallback for very old Safari);
+ *     .eot/.ttf duplicates removed.
+ *   - GothamPro:     woff2 only (covers every browser we target).
+ *   - Gotham:        otf only (no woff2 source available).
+ */
+
+/* ====================================================================
+ * Century Gothic: geometric sans, historically used by Bluewater for
+ * display/heading copy. 4 styles: Regular / Italic / Bold / Bold Italic.
+ * ==================================================================== */
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic.woff2') format('woff2'),
+       url('/fonts/CenturyGothic.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic-Italic.woff2') format('woff2'),
+       url('/fonts/CenturyGothic-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic-Bold.woff2') format('woff2'),
+       url('/fonts/CenturyGothic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic-BoldItalic.woff2') format('woff2'),
+       url('/fonts/CenturyGothic-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ====================================================================
+ * Gotham: the body face originally specified by the brand. Only .otf
+ * available; modern browsers support OpenType natively. Weights mapped
+ * along the standard CSS scale (Book is a non-standard 350 between Light
+ * and Regular, valid per CSS Fonts Level 4, accepted by all evergreen
+ * browsers).
+ * ==================================================================== */
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Book.otf') format('opentype');
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ====================================================================
+ * Gotham Pro: extended-glyph variant of Gotham (Cyrillic + Latin). 5
+ * weights × normal+italic = 10 cuts, all woff2.
+ * ==================================================================== */
+
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/fonts/GothamPro-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
