@@ -4,6 +4,8 @@ import useSWR from "swr";
 import { Loader2, Ship } from "lucide-react";
 import { PortalChrome } from "@/components/portal/PortalChrome";
 import { CharterCard } from "@/components/charter/CharterCard";
+import { ProposalCard } from "@/components/charter/ProposalCard";
+import { CardCarousel } from "@/components/charter/CardCarousel";
 import { listCharters } from "@/lib/api/portal";
 
 /**
@@ -29,6 +31,7 @@ export default function HomePage() {
   });
 
   const charters = data?.charters ?? [];
+  const proposals = data?.proposals ?? [];
   const activeCharter = charters.find((c) => c.status === "active") ?? charters[0] ?? null;
 
   return (
@@ -56,7 +59,27 @@ export default function HomePage() {
         </div>
 
         <div className={`relative pb-16 pt-28 md:pt-32 ${CONTENT_X}`}>
-          <h2 className="font-display text-xl font-bold uppercase tracking-[0.1em] text-white md:text-2xl">
+          {/* Shared, still-live proposals sit above the charters. */}
+          {proposals.length > 0 && (
+            <section className="mb-14">
+              <h2 className="font-display text-xl font-bold uppercase tracking-[0.1em] text-white md:text-2xl">
+                Your proposals
+              </h2>
+              <CardCarousel>
+                {proposals.map((proposal) => (
+                  <ProposalCard key={proposal.id} proposal={proposal} />
+                ))}
+              </CardCarousel>
+            </section>
+          )}
+
+          {/* White over the blue band when it sits at the top; dark once the
+              proposals section has pushed it down onto the light surface. */}
+          <h2
+            className={`font-display text-xl font-bold uppercase tracking-[0.1em] md:text-2xl ${
+              proposals.length > 0 ? "text-portal-navy" : "text-white"
+            }`}
+          >
             Your charters
           </h2>
 
@@ -76,11 +99,11 @@ export default function HomePage() {
               </p>
             </div>
           ) : (
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            <CardCarousel>
               {charters.map((charter) => (
                 <CharterCard key={charter.uuid} charter={charter} />
               ))}
-            </div>
+            </CardCarousel>
           )}
         </div>
       </div>

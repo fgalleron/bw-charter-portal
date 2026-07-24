@@ -60,7 +60,23 @@ export interface CharterDetail extends CharterCard {
   itineraryLink: string | null;
 }
 
+/**
+ * A proposal tile on the home: the charter-card shape without a status or
+ * document count. `url` is the client's own private proposal link (new tab).
+ */
+export interface PortalProposalCard {
+  id: number;
+  title: string;
+  url: string;
+  destinationName: string | null;
+  charterStartDate: string | null;
+  charterEndDate: string | null;
+  photo: CharterPhoto | null;
+}
+
 export interface ChartersResponse {
+  /** Shared, still-live proposals shown above the charters. */
+  proposals: PortalProposalCard[];
   charters: CharterCard[];
   /** Broker shown in the header: the one owning the most recent active charter. */
   accountBroker: PortalBroker | null;

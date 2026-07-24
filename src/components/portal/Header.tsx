@@ -42,7 +42,14 @@ export function Header({
         variant === "solid" ? "portal-field" : "bg-transparent",
       )}
     >
+      {/* Desktop: the solid header carries the stripe artwork (transparent
+          pages dress the hero band itself). Mobile: a tighter stripe band sits
+          on the right of every header. */}
       {variant === "solid" && <Stripes className="hidden md:block" />}
+      <Stripes
+        src="/stripes_header.png"
+        className="w-[32%] max-w-[130px] object-fill opacity-90 md:hidden"
+      />
 
       <div className={cn("relative z-10", containerClassName)}>
         <Logo size="md" />

@@ -6,15 +6,19 @@ import { formatCharterDates } from "@/lib/utils/format";
 import type { CharterCard as CharterCardData } from "@/lib/types/portal";
 
 /**
- * Charter tile on the home screen. A completed charter is desaturated, as in
- * the mockups, so the active one reads first.
+ * Charter tile on the home screen. The whole card is one link, so the photo,
+ * the title and everything below open the charter. A completed charter is
+ * desaturated, as in the mockups, so the active one reads first.
  */
 export function CharterCard({ charter }: { charter: CharterCardData }) {
   const dates = formatCharterDates(charter.charterStartDate, charter.charterEndDate);
   const isCompleted = charter.status === "completed";
 
   return (
-    <article className="group overflow-hidden rounded-xl bg-white shadow-card transition-shadow hover:shadow-card-hover">
+    <Link
+      href={`/charters/${charter.uuid}`}
+      className="group block overflow-hidden rounded-xl bg-white shadow-card transition-shadow hover:shadow-card-hover"
+    >
       <div className="relative aspect-[16/10] overflow-hidden bg-portal-navy">
         {charter.photo ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -54,20 +58,21 @@ export function CharterCard({ charter }: { charter: CharterCardData }) {
             {charter.documentsCount} document{charter.documentsCount === 1 ? "" : "s"}
           </span>
 
-          <Link
-            href={`/charters/${charter.uuid}`}
+          {/* Visual affordance only: the whole card is already the link, so this
+              stays a span to avoid nesting an anchor inside an anchor. */}
+          <span
             className={cn(
               "ml-auto inline-flex items-center gap-3 font-display text-[11px] font-bold uppercase tracking-[0.16em]",
-              "text-slate-500 transition-colors hover:text-portal-blue",
+              "text-slate-500 transition-colors group-hover:text-portal-blue",
             )}
           >
             View charter
             <MoveRight
               className="h-4 w-9 shrink-0 text-portal-blue transition-transform group-hover:translate-x-1"
             />
-          </Link>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
